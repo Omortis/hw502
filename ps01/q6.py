@@ -10,6 +10,21 @@ os.system("cls")
 # ---------------------------------------------------------------------
 
 
+def draw(n):
+    adder = 1
+    y = 1
+    for x in range((2 * n) - 1):
+        for i in range(y):
+            print("*", end="")
+        print()
+        if x >= n-1:
+            adder = -1
+        y += adder
+
+
+draw(5)
+
+
 def draw_2(n):
     adder = 1
     y = 1
