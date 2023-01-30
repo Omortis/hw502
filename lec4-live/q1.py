@@ -10,15 +10,11 @@ os.system("clear")
 # '5...4...3...2...1...Blast Off!'.
 
 
-def countDown(n, message=""):
-    message += "{}...".format(n)
-    if n > 0:
-        n -= 1
-        countDown(n, message)
+def countDown(n):
+    if n == 0:
+        return "Blast Off!"
     else:
-        message += "Blast Off!"
-        print(message)
-        return message
+        return str(n) + "..." + countDown(n-1)
 
 
 print(countDown(5))
