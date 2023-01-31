@@ -23,16 +23,16 @@ os.system("clear")
 
 
 def isPrime(n, i=2):
-    print("outer, n = {},  i = {}".format(n, i))
+    # print("outer, n = {},  i = {}".format(n, i))
     if i > n/2:
-        print("i > n/2")
+        # print("i > n/2")
         return True
     else:
         if n % i == 0:
-            print("\tmod = 0, n = {}, i = {}".format(n, i))
+            # print("\tmod = 0, n = {}, i = {}".format(n, i))
             return False
         else:
-            print("\tmod != 0, n = {}, i = {}".format(n, i))
+            # print("\tmod != 0, n = {}, i = {}".format(n, i))
             return isPrime(n, i+1)
 
 
@@ -41,4 +41,4 @@ def testisPrime(n):
         print('It is ', isPrime(i), 'that', i, 'is prime.')
 
 
-print('It is ', isPrime(19), 'that', 19, 'is prime.')
+testisPrime(19)
