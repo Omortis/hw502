@@ -1,6 +1,9 @@
 import os
 
-os.system("clear")
+if os.name == "posix":
+    os.system("clear")
+else:
+    os.system("cls")
 
 
 def subsetSum1(cap, myList):
