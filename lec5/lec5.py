@@ -30,5 +30,10 @@ def subsetSum1(cap, myList):
 
 test = [5, 10, 18, 23, 30, 45]
 
+help(subsetSum1)
 
+print(subsetSum1(42, test))
+print()
+
+test.reverse()
 print(subsetSum1(42, test))
