@@ -19,18 +19,18 @@ def subsetSum1(cap, myList):
         print("{} > {}".format(first, cap))
         return subsetSum1(cap, rest)
 
-    if first == cap:
+    elif first == cap:
         print("{} == {}".format(first, cap))
         return cap
 
-    if first < cap:
+    else:
         print("{} < {}".format(first, cap))
         return first + subsetSum1(cap-first, rest)
 
 
 test = [5, 10, 18, 23, 30, 45]
 
-help(subsetSum1)
+# help(subsetSum1)
 
 print(subsetSum1(42, test))
 print()
