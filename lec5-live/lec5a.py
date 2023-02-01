@@ -18,11 +18,11 @@ def subsetSum(cap, myList):
     rest = myList[1:]
 
     if first > cap:
-        print("first: {} > cap: {}".format(first, cap))
+        # print("first: {} > cap: {}".format(first, cap))
         return subsetSum(cap, rest)
 
     elif first == cap:
-        print("first: {} == cap: {}".format(first, cap))
+        # print("first: {} == cap: {}".format(first, cap))
         return cap
 
     else:  # first < cap:
@@ -30,8 +30,8 @@ def subsetSum(cap, myList):
         useit = first + subsetSum(cap-first, rest)
         # This executes the "Lose it" strategy.
         loseit = subsetSum(cap, rest)
-        print("\nfirst: {} < cap: {}".format(first, cap))
-        print("useit: {} < loseit: {}".format(useit, loseit))
+        # print("\nfirst: {} < cap: {}".format(first, cap))
+        # print("useit: {} < loseit: {}".format(useit, loseit))
         return max(useit, loseit)
 
 
