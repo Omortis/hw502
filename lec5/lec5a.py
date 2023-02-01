@@ -6,7 +6,7 @@ else:
     os.system("cls")
 
 
-def subsetSum(cap, myList, opsCounter=0):
+def subsetSum(cap, myList):
     """Assumes that cap is a positive number and that myList is a list of positive numbers. 
     Returns the maximum subset sum that is less than cap."""
 
@@ -19,17 +19,17 @@ def subsetSum(cap, myList, opsCounter=0):
 
     if first > cap:
         print("first: {} > cap: {}".format(first, cap))
-        return subsetSum(cap, rest, opsCounter)
+        return subsetSum(cap, rest)
 
-    if first == cap:
+    elif first == cap:
         print("first: {} == cap: {}".format(first, cap))
         return cap
 
-    if first < cap:
+    else:  # first < cap:
         # This executes the "Use it" strategy.
-        useit = first + subsetSum(cap-first, rest, opsCounter)
+        useit = first + subsetSum(cap-first, rest)
         # This executes the "Lose it" strategy.
-        loseit = subsetSum(cap, rest, opsCounter)
+        loseit = subsetSum(cap, rest)
         print("\nfirst: {} < cap: {}".format(first, cap))
         print("useit: {} < loseit: {}".format(useit, loseit))
         return max(useit, loseit)
