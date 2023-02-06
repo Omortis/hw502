@@ -1,4 +1,5 @@
 import os
+import math
 
 if os.name == "posix":
     os.system("clear")
@@ -46,7 +47,35 @@ def bruteForceReverse(inc):
     return returnList
 
 
-print(bruteForceReverse([1, 2, 3]))
+print("brute force: ", bruteForceReverse([1, 2, 3]))
 
+assert bruteForceReverse([1, 2, 3]) == [[1, 2, 3], [3, 2, 1], [
+    2, 3, 1], [1, 3, 2], [3, 1, 2], [2, 1, 3]]
+
+
+def permute(inc, result=[]):
+
+    if len(result) == math.factorial(len(inc)):
+        return result
+
+    else:
+        # shallow copy
+        local = inc[:]
+        rev = inc[:]
+
+        result.append(local)
+        rev.reverse()
+        result.append(rev)
+
+        current = inc[0]
+
+        inc.pop(0)
+        shiftList = inc[:]  # copy, not assign ref
+        shiftList.append(current)
+        inc = shiftList[:]
+        return permute(inc, result)
+
+
+print(permute([1, 2, 3]))
 assert bruteForceReverse([1, 2, 3]) == [[1, 2, 3], [3, 2, 1], [
     2, 3, 1], [1, 3, 2], [3, 1, 2], [2, 1, 3]]
