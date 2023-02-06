@@ -15,27 +15,38 @@ else:
 # list of 𝑛 numbers.
 
 
-def listPermutations():
-    return [1, 2]
+# 1, 2, 3 reverse 3, 2, 1
+# shift left
+# 2, 3, 1 reverse 1, 3, 2
+# shift left
+# 3, 1, 2 reverse 2, 1, 3
 
 
-# from collections.abc import Iterable
+def bruteForceReverse(inc):
+
+    returnList = []
+
+    for i in range(len(inc)):
+
+        # shallow copy
+        local = inc[:]
+        rev = inc[:]
+
+        returnList.append(local)
+        rev.reverse()
+        returnList.append(rev)
+
+        current = inc[0]
+
+        inc.pop(0)
+        shiftList = inc[:]  # copy, not assign ref
+        shiftList.append(current)
+        inc = shiftList[:]
+
+    return returnList
 
 
-# def permute(iterable: Iterable[str]) -> set[str]:
-#     perms = set()
+print(bruteForceReverse([1, 2, 3]))
 
-#     if len(iterable) == 1:
-#         return {*iterable}
-
-#     for index, char in enumerate(iterable):
-#         perms.update([char + perm for perm in permute(iterable[:index] + iterable[index + 1:])])
-
-#     return perms
-
-
-# if __name__ == '__main__':
-#     print(permute('abc'))
-#     # {'bca', 'abc', 'cab', 'acb', 'cba', 'bac'}
-#     print(permute(['1', '2', '3']))
-#     # {'123', '312', '132', '321', '213', '231'}
+assert bruteForceReverse([1, 2, 3]) == [[1, 2, 3], [3, 2, 1], [
+    2, 3, 1], [1, 3, 2], [3, 1, 2], [2, 1, 3]]
