@@ -17,3 +17,25 @@ else:
 
 def listPermutations():
     return [1, 2]
+
+
+# from collections.abc import Iterable
+
+
+# def permute(iterable: Iterable[str]) -> set[str]:
+#     perms = set()
+
+#     if len(iterable) == 1:
+#         return {*iterable}
+
+#     for index, char in enumerate(iterable):
+#         perms.update([char + perm for perm in permute(iterable[:index] + iterable[index + 1:])])
+
+#     return perms
+
+
+# if __name__ == '__main__':
+#     print(permute('abc'))
+#     # {'bca', 'abc', 'cab', 'acb', 'cba', 'bac'}
+#     print(permute(['1', '2', '3']))
+#     # {'123', '312', '132', '321', '213', '231'}
