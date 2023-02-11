@@ -21,7 +21,7 @@ def riemann_xsquared(n):
     # baked-in interval: [0, 1]
     endp1 = 0
     endp2 = 1
-    delta = endp2 / n
+    delta = (endp2 - endp1) / n
 
     sum = i = 0
 
