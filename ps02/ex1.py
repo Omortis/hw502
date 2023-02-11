@@ -18,10 +18,7 @@ def inclusive_list(a, b):
     endp2 = b if a < b else a
 
     # create list from endpoints
-    intList = [endp1]
-    while endp1 < endp2:
-        endp1 += 1
-        intList.append(endp1)
+    intList = [n for n in range(endp1, endp2+1)]
 
     return intList
 
