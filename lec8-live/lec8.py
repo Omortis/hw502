@@ -6,7 +6,7 @@ else:
     os.system("cls")
 
 
-class Queue:
+class Queue(object):
     def __init__(self):
         self.items = []
         self.front = None
@@ -67,7 +67,8 @@ print("rear: ", rear)
 assert q.isEmpty() == True
 
 
-class StackQ:
+# Inefficient pop() method, efficient push()
+class StackQ(object):
     def __init__(self):
         self.q1 = Queue()
         self.q2 = Queue()
@@ -125,3 +126,40 @@ data = stack.pop()
 print("pop :", stack)
 data = stack.pop()
 print(data)
+
+
+# Inefficient push() method, efficient pop()
+class StackQ2(object):
+    def __init__(self):
+        self.q1 = Queue()
+        self.q2 = Queue()
+
+    def push(self, item):
+        self.q1.enqueue(item)
+
+    def pop(self):
+        while len(self.q1.items) > 1:
+            self.q2.enqueue(self.q1.dequeue())
+        popVal = self.q1.dequeue()
+        temp = self.q1
+        self.q1 = self.q2
+        self.q2 = temp
+        return popVal
+
+    def isEmpty(self):
+        return self.q1.isEmpty()
+
+    def peek(self):
+        if self.q1.isEmpty() == False:
+            return self.q1.items[-1]
+
+    def __str__(self):
+        myReturnString = ""
+        if self.q1.items == []:
+            return "# @"
+        else:
+            for i in range(0, len(self.q1.items)-1):
+                myReturnString = myReturnString + str(self.q1.items[i]) + ", "
+            myReturnString = myReturnString + \
+                str(self.q1.items[len(self.q1.items)-1])
+            return "# " + myReturnString + " @"
