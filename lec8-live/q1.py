@@ -110,8 +110,8 @@ class LakeHouse(House):
     def __init__(self, address, style, yearBuilt, numFloors, marketValue):
         House.__init__(self, address, style, yearBuilt,
                        1, numFloors, marketValue)
-        self.boatStatus = False
-        self.isRented = False
+        self._boatStatus = False  # protected
+        self._isRented = False   # protected
 
     def __str__(self):
         output = self.address + ", "
@@ -119,28 +119,28 @@ class LakeHouse(House):
         output += str(self.yearBuilt) + ", "
         output += str(self.numFloors) + " floors, "
         output += '${:9,.2f}'.format(self.marketValue) + ", "
-        output += ("rented, " if self.isRented == True else "not rented, ")
-        output += ("boat docked" if self.boatStatus ==
+        output += ("rented, " if self._isRented == True else "not rented, ")
+        output += ("boat docked" if self._boatStatus ==
                    True else "boat not docked")
         return output
 
     def isLakeHouseRented(self):
-        return self.isRented
+        return self._isRented
 
     def rent(self):
-        self.isRented = True
+        self._isRented = True
 
     def vacate(self):
-        self.isRented = False
+        self._isRented = False
 
     def isBoatDocked(self):
-        return self.boatStatus
+        return self._boatStatus
 
     def dockBoat(self):
-        self.boatStatus = True
+        self._boatStatus = True
 
     def sailAway(self):
-        self.boatStatus = False
+        self._boatStatus = False
 
 
 lakeHouse = LakeHouse("565 North Clinton Drive", "Ranch", "1948", 2, 175000)
