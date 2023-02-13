@@ -44,6 +44,7 @@ class House:
         output += '${:9,.2f}'.format(self.marketValue)
         return output
 
+    # Added for Question 2.
     def __lt__(self, other):
         return self.marketValue < other.marketValue
 
