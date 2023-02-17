@@ -44,11 +44,11 @@ def permute(inc, result=[]):
         return permute(inc, result)
 
 
-ans = permute([1, 3, 5, 7])
-counter = 0
-for i in ans:
-    print("i {}: {}".format(counter, i))
-    counter += 1
+# ans = permute([1, 3, 5, 7])
+# counter = 0
+# for i in ans:
+#     print("i {}: {}".format(counter, i))
+#     counter += 1
 
 # assert permute([1, 2, 3]) == [[1, 2, 3], [3, 2, 1], [
 #     2, 3, 1], [1, 3, 2], [3, 1, 2], [2, 1, 3]]
@@ -80,3 +80,7 @@ def avgList(myList):
 ans = avgList(permute([1, 3, 5, 7]))
 
 print("ans: ", ans)
+
+# Python 3.10.6 prints:
+# averageList:  [96, 96, 96, 96]
+# ans:  [4.0, 4.0, 4.0, 4.0]
