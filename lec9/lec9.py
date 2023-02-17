@@ -120,14 +120,13 @@ def compareMortgages(amt, years, fixedRate, pts, ptsRate,
         print(' Total payments = $' + str(int(m.getTotalPaid())))
 
 
-compareMortgages(amt=200000, years=30, fixedRate=0.045,
-                 pts=3.25, ptsRate=0.035, varRate1=0.025,
-                 varRate2=0.06, varMonths=48)
-
+# compareMortgages(amt=200000, years=30, fixedRate=0.045,
+#                  pts=3.25, ptsRate=0.035, varRate1=0.025,
+#                  varRate2=0.06, varMonths=48)
 
 
 def plotMortgages(morts, amt):
-    styles = ['b-', 'b-.', 'b:']
+    styles = ['b-', 'g-.', 'r:']
     # Give names to figure numbers
     payments = 0
     cost = 1
