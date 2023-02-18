@@ -1,6 +1,4 @@
 import os
-import matplotlib.pyplot as plt
-import numpy as np
 
 # linux or windows?
 if os.name == "posix":
