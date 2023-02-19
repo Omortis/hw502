@@ -32,6 +32,7 @@ class Accumulator(object):
 
 
 def fib(n, accum):
+    """Assumes n int>=0 Returns the n^th Fibonacci number"""
 
     accum.add(n)
 
