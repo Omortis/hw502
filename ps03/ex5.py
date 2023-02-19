@@ -43,14 +43,11 @@ def myPoly(coeffs):
     """coeffs is a list of floats or ints, function returns a polynomial with
     the kth entry in coeffs as the coefficient of the monomial x^k"""
     if len(coeffs) == 1:
-        def f(z):
-            return coeffs[0]
-        return f
+        return lambda z: coeffs[0]
+
     else:
-        def f(z):
-            exponent = len(coeffs) - 1
-            return coeffs[-1] * (z**exponent) + myPoly(coeffs[:-1])(z)
-        return f
+        exponent = len(coeffs) - 1
+        return lambda z: coeffs[-1] * (z**exponent) + myPoly(coeffs[:-1])(z)
 
 
 assert abs(myPoly([1, 2, 1])(5) - 36) <= .1
