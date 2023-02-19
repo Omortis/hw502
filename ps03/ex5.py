@@ -1,5 +1,4 @@
 import os
-import math
 
 if os.name == "posix":
     os.system("clear")
