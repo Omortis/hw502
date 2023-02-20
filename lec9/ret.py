@@ -24,6 +24,8 @@ def retirementCalc(w, r, savings):
     return savings / ra
 
 
+moneyFmt = "${:,.2f}"
+
 currentAge = 54
 retirementAge = 70
 deathAge = 100
@@ -31,7 +33,7 @@ W = retirementAge - currentAge
 R = 0.05
 retirementPay = 50000
 savings = (deathAge - retirementAge)*retirementPay
-print("${:,}".format(savings))
+print(moneyFmt.format(savings))
 
 M = retirementCalc(W, R, savings)
-print(M)
+print(moneyFmt.format(M))
