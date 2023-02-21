@@ -14,7 +14,8 @@ else:
 #         that returns H with probability pHeads and T with probability 1-pHeads, and
 #
 #     biasedCoinTrial(n,pHeads)
-#         that returns a list or array that flips a biased coin with probability pHeads of heads a total of n times.
+#         that returns a list or array that flips a biased coin with probability
+#         pHeads of heads a total of n times.
 #
 #     countHeads(trial)
 #         that counts the number of heads in the list produced by biasedCoinTrial
@@ -45,15 +46,15 @@ def biasedCoinTrial(n, pHeads):
 def countHeads(trialList):
 
     data = np.array(trialList)
+    *_, counts = np.unique(data, return_counts=True)
 
-    headsArr = np.extract(data == "H", data)
-    tailsArr = np.extract(data == "T", data)
+    # print(flips)
+    # ['H' 'T']
+    # print(counts)
+    # [74935 25066]
 
-    heads = np.around((headsArr.size / len(trialList)) * 100, 1)
-    tails = np.around((tailsArr.size / len(trialList)) * 100, 1)
-
-    print("\n'H': {}%".format(heads))
-    print("'T': {}%\n".format(tails))
+    # return only the number of heads
+    return counts[0]
 
 
 n = 100000
