@@ -119,30 +119,94 @@ import random
 # ---------------------------------------------------------------------
 
 
-def find_smallest(l):
-    try:
-        smallest = l[0]
-        for i in range(len(l)):
-            if l[i] < smallest:
-                smallest = l[i]
-        return smallest
-    except TypeError as msg:
-        print("arg must be a list: ", msg)
-        return None
+# def find_smallest(l):
+#     try:
+#         smallest = l[0]
+#         for i in range(len(l)):
+#             if l[i] < smallest:
+#                 smallest = l[i]
+#         return smallest
+#     except TypeError as msg:
+#         print("arg must be a list: ", msg)
+#         return None
 
 
-assert find_smallest([2, 3, 4, 5, 1]) == 1
-assert find_smallest(2) == None
+# assert find_smallest([2, 3, 4, 5, 1]) == 1
+# assert find_smallest(2) == None
 
 
-def find_smallest2(l):
-    try:
-        l.sort()
-        return l[0]
-    except AttributeError as msg:
-        print("arg must be a list: ", msg)
+# def find_smallest2(l):
+#     try:
+#         l.sort()
+#         return l[0]
+#     except AttributeError as msg:
+#         print("arg must be a list: ", msg)
 
 
-assert find_smallest2([2, 3, 4, 5, 1]) == 1
-assert find_smallest2(2) == None
-assert find_smallest2("cat") == None
+# assert find_smallest2([2, 3, 4, 5, 1]) == 1
+# assert find_smallest2(2) == None
+# assert find_smallest2("cat") == None
+
+# ---------------------------------------------------------------------
+# Q7
+# ---------------------------------------------------------------------
+
+
+# def vowel_replacer(s):
+#     try:
+#         # split incoming string
+#         data = [*s]
+#         TARGETS = ['a', 'e', 'i', 'o', 'u']
+
+#         for index in range(len(data)):
+#             if data[index] in TARGETS:
+#                 data[index] = 'y'
+#         return "".join(str(x) for x in data)
+#     except TypeError as msg:
+#         print("arg must be a string value: ", msg)
+#         return None
+
+
+# assert vowel_replacer(5) == None
+# assert vowel_replacer("streets") == "stryyts"
+# assert vowel_replacer("aeiou") == "yyyyy"
+
+# ---------------------------------------------------------------------
+# Q8
+# ---------------------------------------------------------------------
+from functools import cache
+
+# cache all calls - cached values are returned instead
+# of recalculated
+
+
+@cache
+def fib(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return fib(n - 1) + fib(n - 2)
+
+
+def fib_list(m):
+
+    # Work in reverse order, only the first call invokes the recursive
+    # call, the rest just return the cached value.
+    current = m
+    fibList = []
+    while current > -1:
+        fibList.append(fib(current))
+        current -= 1
+
+    fibList.reverse()
+    return fibList
+
+
+n = 11
+assert fib_list(n) == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144]
+
+n = 10
+assert fib_list(n) == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+
+n = 12
+assert fib_list(n) == [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233]
