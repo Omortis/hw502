@@ -1,7 +1,6 @@
 import os
 import numpy as np
 import pandas as pd
-import random
 # import seaborn as sns
 # import matplotlib.pyplot as plt
 
@@ -97,19 +96,53 @@ else:
 # Q5
 # ---------------------------------------------------------------------
 import string
+import random
 
 
-def pick_random(l):
+# def pick_random(l):
+#     try:
+#         return l[random.randrange(len(l))]
+#     except TypeError as msg:
+#         print("arg must be a list of any type")
+#         return None
+
+
+# alphabet = list(string.ascii_lowercase)
+# print("alphabet: ", alphabet)
+# ans = pick_random(alphabet)
+# print("ans: ", ans)
+
+# assert pick_random(1) == None
+
+# ---------------------------------------------------------------------
+# Q6
+# ---------------------------------------------------------------------
+
+
+def find_smallest(l):
     try:
-        return l[random.randrange(len(l))]
+        smallest = l[0]
+        for i in range(len(l)):
+            if l[i] < smallest:
+                smallest = l[i]
+        return smallest
     except TypeError as msg:
-        print("arg must be a list of any types")
+        print("arg must be a list: ", msg)
         return None
 
 
-alphabet = list(string.ascii_lowercase)
-print("alphabet: ", alphabet)
-ans = pick_random(alphabet)
-print("ans: ", ans)
+assert find_smallest([2, 3, 4, 5, 1]) == 1
+assert find_smallest(2) == None
 
-assert pick_random(1) == None
+
+def find_smallest2(l):
+    try:
+        l.sort()
+        return l[0]
+    except AttributeError as msg:
+        print("arg must be a list: ", msg)
+
+
+assert find_smallest2([2, 3, 4, 5, 1]) == 1
+assert find_smallest2(2) == None
+assert find_smallest2("cat") == None
