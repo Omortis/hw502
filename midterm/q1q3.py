@@ -35,6 +35,45 @@ def list2tuple(listOfTuples):
     return (unc, duke)
 
 
-testInput = [(1, 1), (2, 1), (3, 2), (4, 3), (5, 5), (6, 8), (7, 13)]
+# testInput = [(1, 1), (2, 1), (3, 2), (4, 3), (5, 5), (6, 8), (7, 13)]
 
-assert list2tuple(testInput) == ([1, 2, 3, 4, 5, 6, 7], [1, 1, 2, 3, 5, 8, 13])
+# assert list2tuple(testInput) == ([1, 2, 3, 4, 5, 6, 7], [1, 1, 2, 3, 5, 8, 13])
+
+
+def countTies(gameData):
+    """Given a list of 2-tuples, count the number of instances where the first entry equals the second entry."""
+    ties = 0
+    for scoreDelta in gameData:
+        if scoreDelta[0] == scoreDelta[1]:
+            ties += 1
+    return ties
+
+
+def countTies2(gameData):
+    splitTeams = list2tuple(gameData)
+    df = pd.DataFrame({"UNC": splitTeams[0], "Duke": splitTeams[1]})
+    # skip opening score (0, 0)
+    df1 = df[(df.UNC == df.Duke) & (df.UNC != 0)]
+    return len(df1.index)
+
+
+assert countTies2(UNCvDUKE) == 12
+assert countTies([(1, 1), (2, 1), (3, 2), (4, 3),
+                 (5, 5), (6, 8), (7, 13)]) == 2
+
+
+def listDiff(myList):
+    """Takes a list of integers of length n 
+    and returns a list of integers of length n-1 
+    recording the difference between each entry."""
+    scoreDeltas = []
+    for i in range(len(myList)):
+        if i > 0:
+            scoreDeltas.append(myList[i] - myList[i - 1])
+
+    return scoreDeltas
+
+
+print(listDiff([1, 2, 3, 4, 5, 6, 7]))
+assert listDiff([1, 2, 3, 4, 5, 6, 7]) == [1, 1, 1, 1, 1, 1]
+assert listDiff([1, 1, 2, 3, 5, 8, 13]) == [0, 1, 1, 2, 3, 5]

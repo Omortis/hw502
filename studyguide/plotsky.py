@@ -15,26 +15,26 @@ else:
 # ---------------------------------------------------------------------
 
 
-# def f(x):
-#     return math.exp(x)
+def f(x):
+    return math.exp(x)
 
 
-# x = list(range(0, 10))
+x = list(range(0, 10))
 
-# y = []
-# for i in x:
-#     y.append(f(i))
+y = []
+for i in x:
+    y.append(f(i))
 
-# fig, ax = plt.subplots()
+fig, ax = plt.subplots()
 
-# ax.plot(x, y, color="green")
+ax.plot(x, y, color="green")
 
-# ax.set_xlabel("Time", fontsize = 16)
-# ax.set_ylabel("Growth", fontsize = 16)
-# ax.set_title("y = exp(x)", fontsize = 18, color = "darkblue")
-# plt.grid(True, linestyle='--')
+ax.set_xlabel("Time", fontsize=16)
+ax.set_ylabel("Growth", fontsize=16)
+ax.set_title("y = exp(x)", fontsize=18, color="darkblue")
+plt.grid(True, linestyle='--')
 
-# plt.show()
+plt.show()
 
 
 # ---------------------------------------------------------------------
