@@ -77,3 +77,44 @@ def listDiff(myList):
 print(listDiff([1, 2, 3, 4, 5, 6, 7]))
 assert listDiff([1, 2, 3, 4, 5, 6, 7]) == [1, 1, 1, 1, 1, 1]
 assert listDiff([1, 1, 2, 3, 5, 8, 13]) == [0, 1, 1, 2, 3, 5]
+
+
+def ptStats(diffList):
+    """Takes in a list of 0s,1s,2s, and 3s 
+    and returns a tuple of the number of 0s,1s,2s, and 3s."""
+
+    acc = {}
+    for i in diffList:
+        if i in acc.keys():
+            acc[i] += 1
+        else:
+            acc[i] = 1
+
+    # This approach only works because the range on the inputs
+    # is specified.
+    return (acc[0], acc[1], acc[2], acc[3])
+
+
+"""Tests the answer to q3 part c"""
+assert ptStats([3, 0, 0, 1, 1, 1, 2, 0, 3]) == (3, 3, 1, 2)
+assert ptStats([0, 2, 0, 2, 2, 1, 0, 3, 0, 0, 0, 2]) == (6, 1, 4, 1)
+
+
+# This is the DataFrame solution to Q3 part D.
+teams = list2tuple(UNCvDUKE)
+# print(teams)
+df = pd.DataFrame(data={"UNC": ptStats(
+    listDiff(teams[0])), "Duke": ptStats(listDiff(teams[1]))})
+print(df)
+print("\n3-pointers by team:")
+print(df.loc[3, :].to_string())
+
+# Here is the same thing without DataFrames
+teams = list2tuple(UNCvDUKE)
+unc = ptStats(listDiff(teams[0]))
+duke = ptStats(listDiff(teams[1]))
+
+if unc[3] > duke[3]:
+    print("UNC had more 3-pointers!")
+else:
+    print("Duke had more 3-pointers!")
